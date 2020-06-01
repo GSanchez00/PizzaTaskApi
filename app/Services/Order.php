@@ -53,7 +53,10 @@ class Order
 
     public function getAll()
     {
-        return OrderModel::with('orderContact','orderDetails')->get();
+        return OrderModel::with('orderContact','orderDetails')
+            ->orderBy('datetime', 'desc')
+            ->take(50)
+            ->get();
     }
 
     public function get($id)
